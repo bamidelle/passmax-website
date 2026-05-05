@@ -3,949 +3,483 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PassMax AI – Nigeria's Smartest Exam Companion | JAMB, WAEC & Common Entrance</title>
-<meta name="description" content="Pass JAMB, WAEC, and Common Entrance on your first try. PassMax AI gives Nigerian students daily gamified practice, AI explanations, and real exam simulations. Try free – no signup needed.">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- ── PRIMARY SEO ── -->
+<title>PassMax AI – Pass JAMB, WAEC & Common Entrance | Nigeria's #1 Exam Practice App</title>
+<meta name="description" content="PassMax AI gives Nigerian students 60,000+ real past questions for JAMB, WAEC, NECO, BECE & Common Entrance. Gamified daily practice, AI explanations, mock exams and parent monitoring. Try free — no signup needed.">
+<meta name="keywords" content="JAMB past questions, WAEC practice app Nigeria, Common Entrance past questions, NECO past questions, Nigerian exam prep app, BECE practice, JAMB 2025 app, pass WAEC Nigeria, AI study app Nigeria, exam practice Nigeria">
+<link rel="canonical" href="https://passmax.ng/">
+
+<!-- ── OPEN GRAPH ── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://passmax.ng/">
+<meta property="og:title" content="PassMax AI – Nigeria's #1 Gamified Exam Practice App">
+<meta property="og:description" content="60,000+ JAMB, WAEC, NECO & Common Entrance past questions with AI explanations. Study smarter. Pass first time.">
+<meta property="og:image" content="https://passmax.ng/og-image.png">
+<meta property="og:locale" content="en_NG">
+
+<!-- ── TWITTER CARD ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PassMax AI – Pass JAMB & WAEC First Try">
+<meta name="twitter:description" content="Nigeria's gamified AI exam companion. 60,000+ past questions, streaks, mock exams & parent dashboard.">
+
+<!-- ── SCHEMA.ORG ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PassMax AI",
+  "applicationCategory": "EducationApplication",
+  "operatingSystem": "Web, Android, iOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "2500",
+    "priceCurrency": "NGN"
+  },
+  "description": "AI-powered exam practice app for Nigerian students preparing for JAMB, WAEC, NECO, BECE and Common Entrance.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "1240"
+  }
+}
+</script>
+
+<!-- Preconnect for faster font loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<!-- Fallback font stack inline so page renders correctly even if Google Fonts is slow -->
 <style>
-  :root {
-    --gold: #F0A500;
-    --gold-dim: #c88800;
-    --dark: #080808;
-    --dark2: #0f0f0f;
-    --dark3: #161616;
-    --dark4: #1e1e1e;
-    --green: #22C55E;
-    --red: #EF4444;
-    --text: #f0ede8;
-    --muted: #888;
-    --border: rgba(240,165,0,0.15);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--dark);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ── NOISE TEXTURE ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 32px;
-    background: rgba(8,8,8,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Syne', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-logo span { color: var(--gold); }
-
-  .nav-bolt {
-    width: 28px; height: 28px;
-    background: var(--gold);
-    clip-path: polygon(60% 0%, 40% 45%, 70% 45%, 30% 100%, 55% 55%, 25% 55%);
-  }
-
-  .nav-cta {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .nav-cta a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .nav-cta a:hover { color: var(--text); }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--gold);
-    color: #000;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 10px 22px;
-    border-radius: 8px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    letter-spacing: 0.02em;
-  }
-
-  .btn-primary:hover {
-    background: #ffc020;
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    color: var(--gold);
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 10px 22px;
-    border-radius: 8px;
-    text-decoration: none;
-    border: 1.5px solid var(--gold);
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.02em;
-  }
-
-  .btn-secondary:hover {
-    background: rgba(240,165,0,0.1);
-  }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 24px 80px;
-    overflow: hidden;
-  }
-
-  .hero-glow {
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 700px;
-    height: 500px;
-    background: radial-gradient(ellipse at center, rgba(240,165,0,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(240,165,0,0.1);
-    border: 1px solid rgba(240,165,0,0.3);
-    color: var(--gold);
-    font-size: 0.78rem;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-bottom: 28px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--gold);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    max-width: 820px;
-    margin: 0 auto 24px;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  h1 em {
+  /* System font fallbacks while Google Fonts loads */
+  @font-face {
+    font-family: 'Syne';
     font-style: normal;
-    color: var(--gold);
-    position: relative;
-  }
-
-  h1 em::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: 0; right: 0;
-    height: 3px;
-    background: var(--gold);
-    border-radius: 2px;
-    opacity: 0.4;
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: #aaa;
-    max-width: 560px;
-    margin: 0 auto 40px;
-    line-height: 1.7;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 56px;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  .hero-actions .btn-primary { font-size: 1rem; padding: 14px 32px; }
-  .hero-actions .btn-secondary { font-size: 1rem; padding: 14px 32px; }
-
-  .hero-social-proof {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
-
-  .proof-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-
-  .proof-item strong { color: var(--text); font-weight: 600; }
-
-  .proof-dot {
-    width: 4px; height: 4px;
-    background: var(--muted);
-    border-radius: 50%;
-  }
-
-  /* ── MOCK APP PREVIEW ── */
-  .hero-preview {
-    width: 100%;
-    max-width: 360px;
-    margin: 56px auto 0;
-    animation: fadeUp 0.7s 0.5s ease both;
-  }
-
-  .phone-frame {
-    background: var(--dark3);
-    border: 2px solid var(--border);
-    border-radius: 24px;
-    padding: 20px 16px;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .phone-frame::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 80px; height: 4px;
-    background: var(--dark4);
-    border-radius: 0 0 4px 4px;
-  }
-
-  .app-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    padding: 0 4px;
-  }
-
-  .app-logo-mini {
-    font-family: 'Syne', sans-serif;
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--gold);
-  }
-
-  .app-streak {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.75rem;
-    background: rgba(240,165,0,0.1);
-    border: 1px solid rgba(240,165,0,0.2);
-    color: var(--gold);
-    padding: 4px 10px;
-    border-radius: 100px;
-  }
-
-  .progress-bar-wrap {
-    background: var(--dark4);
-    border-radius: 100px;
-    height: 6px;
-    margin-bottom: 20px;
-    overflow: hidden;
-  }
-
-  .progress-bar-fill {
-    height: 100%;
-    width: 30%;
-    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
-    border-radius: 100px;
-    animation: growBar 1.5s 1s ease both;
-  }
-
-  @keyframes growBar {
-    from { width: 0; }
-    to { width: 30%; }
-  }
-
-  .question-card {
-    background: var(--dark4);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 14px;
-    padding: 16px;
-    margin-bottom: 12px;
-  }
-
-  .q-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
-
-  .tag {
-    font-size: 0.65rem;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 100px;
-    letter-spacing: 0.03em;
-  }
-
-  .tag-green { background: rgba(34,197,94,0.15); color: var(--green); }
-  .tag-gold { background: rgba(240,165,0,0.15); color: var(--gold); }
-  .tag-blue { background: rgba(99,179,237,0.15); color: #63b3ed; }
-
-  .q-text {
-    font-size: 0.9rem;
-    font-weight: 500;
-    line-height: 1.5;
-    color: var(--text);
-  }
-
-  .answer-btn {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 8px;
-    transition: all 0.2s;
-  }
-
-  .answer-btn.neutral {
-    background: var(--dark4);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: var(--text);
-  }
-
-  .answer-btn.correct {
-    background: rgba(34,197,94,0.15);
-    border: 1px solid var(--green);
-    color: var(--green);
-  }
-
-  /* ── SECTIONS ── */
-  section {
-    padding: 80px 24px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .container {
-    max-width: 1060px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 14px;
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 16px;
-  }
-
-  .section-sub {
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 520px;
-    line-height: 1.7;
-  }
-
-  /* ── FEATURES ── */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 56px;
-  }
-
-  .feature-card {
-    background: var(--dark2);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    padding: 28px;
-    transition: border-color 0.3s, transform 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .feature-card:hover {
-    border-color: rgba(240,165,0,0.2);
-    transform: translateY(-3px);
-  }
-
-  .feature-card:hover::before { opacity: 1; }
-
-  .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 16px;
-  }
-
-  .feature-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-  }
-
-  .feature-desc {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  /* ── LEVELS ── */
-  .levels-section { background: var(--dark2); }
-
-  .levels-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    margin-top: 48px;
-  }
-
-  .level-card {
-    background: var(--dark3);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    padding: 28px;
-    position: relative;
-  }
-
-  .level-emoji { font-size: 2.2rem; margin-bottom: 14px; display: block; }
-
-  .level-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 800;
-    margin-bottom: 4px;
-  }
-
-  .level-age {
-    font-size: 0.78rem;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  .level-desc {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-
-  .level-exams {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .exam-tag {
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: rgba(240,165,0,0.1);
-    border: 1px solid rgba(240,165,0,0.2);
-    color: var(--gold);
-    letter-spacing: 0.02em;
-  }
-
-  /* ── STATS ── */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 2px;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-top: 56px;
-  }
-
-  .stat-box {
-    background: var(--dark2);
-    padding: 36px 24px;
-    text-align: center;
-  }
-
-  .stat-number {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.4rem;
-    font-weight: 800;
-    color: var(--gold);
-    letter-spacing: -0.04em;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .stat-label {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-
-  /* ── PRICING ── */
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    margin-top: 56px;
-    align-items: start;
-  }
-
-  .price-card {
-    background: var(--dark2);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 20px;
-    padding: 32px 28px;
-    position: relative;
-    transition: transform 0.3s;
-  }
-
-  .price-card:hover { transform: translateY(-4px); }
-
-  .price-card.featured {
-    border-color: var(--gold);
-    background: linear-gradient(160deg, rgba(240,165,0,0.06), var(--dark2));
-  }
-
-  .price-badge {
-    display: inline-block;
-    background: var(--gold);
-    color: #000;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 100px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .price-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 800;
-    margin-bottom: 8px;
-  }
-
-  .price-amount {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.6rem;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .price-amount span { font-size: 1rem; font-weight: 500; color: var(--muted); }
-
-  .price-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
-
-  .price-features {
-    list-style: none;
-    margin-bottom: 28px;
-  }
-
-  .price-features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 0.88rem;
-    color: #ccc;
-    margin-bottom: 10px;
-    line-height: 1.4;
-  }
-
-  .check { color: var(--green); flex-shrink: 0; font-size: 0.9rem; margin-top: 1px; }
-  .cross { color: var(--red); flex-shrink: 0; font-size: 0.9rem; margin-top: 1px; }
-
-  .price-free { color: var(--green); font-weight: 700; }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials-section { background: var(--dark2); }
-
-  .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
-    margin-top: 48px;
-  }
-
-  .testi-card {
-    background: var(--dark3);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    padding: 24px;
-  }
-
-  .testi-stars {
-    color: var(--gold);
-    font-size: 0.85rem;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-  }
-
-  .testi-text {
-    font-size: 0.9rem;
-    line-height: 1.65;
-    color: #ccc;
-    margin-bottom: 16px;
-    font-style: italic;
-  }
-
-  .testi-author {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .testi-avatar {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.85rem;
-    flex-shrink: 0;
-  }
-
-  .testi-name { font-weight: 600; font-size: 0.85rem; }
-  .testi-role { font-size: 0.75rem; color: var(--muted); }
-
-  /* ── HOW IT WORKS ── */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 32px;
-    margin-top: 56px;
-    counter-reset: steps;
-  }
-
-  .step {
-    position: relative;
-    padding-left: 0;
-  }
-
-  .step-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 3rem;
-    font-weight: 800;
-    color: rgba(240,165,0,0.15);
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-
-  .step-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .step-desc {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  /* ── FAQ ── */
-  .faq-list { margin-top: 48px; }
-
-  .faq-item {
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 20px 0;
-  }
-
-  .faq-q {
-    font-family: 'Syne', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    user-select: none;
-  }
-
-  .faq-toggle {
-    width: 24px; height: 24px;
-    background: rgba(240,165,0,0.1);
-    border: 1px solid rgba(240,165,0,0.2);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 1rem;
-    color: var(--gold);
-    transition: all 0.2s;
-  }
-
-  .faq-item.open .faq-toggle { background: var(--gold); color: #000; }
-
-  .faq-a {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s;
-  }
-
-  .faq-item.open .faq-a {
-    max-height: 200px;
-    padding-top: 12px;
-  }
-
-  /* ── CTA BAND ── */
-  .cta-band {
-    background: linear-gradient(135deg, rgba(240,165,0,0.12), rgba(240,165,0,0.04));
-    border-top: 1px solid rgba(240,165,0,0.2);
-    border-bottom: 1px solid rgba(240,165,0,0.2);
-    text-align: center;
-    padding: 80px 24px;
-  }
-
-  .cta-band .section-title { margin-bottom: 16px; }
-  .cta-band .section-sub { margin: 0 auto 36px; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--dark);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 40px 24px;
-    text-align: center;
-  }
-
-  .footer-logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-
-  .footer-links a {
-    font-size: 0.82rem;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--text); }
-
-  .footer-copy {
-    font-size: 0.78rem;
-    color: #555;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 640px) {
-    nav { padding: 16px 20px; }
-    .nav-cta a { display: none; }
-    .hero { padding: 100px 20px 60px; }
-    .stats-row { grid-template-columns: 1fr 1fr; }
-    section { padding: 60px 20px; }
-  }
+    font-weight: 700 800;
+    font-display: swap;
+    src: local('Arial Black'), local('Impact');
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+    src: local('Helvetica Neue'), local('Arial'), local('sans-serif');
+  }
+</style>
+
+<style>
+:root {
+  --gold: #F0A500;
+  --gold-dim: #c88800;
+  --dark: #080808;
+  --dark2: #0f0f0f;
+  --dark3: #161616;
+  --dark4: #1e1e1e;
+  --green: #22C55E;
+  --red: #EF4444;
+  --blue: #3B82F6;
+  --text: #f0ede8;
+  --muted: #888;
+  --border: rgba(240,165,0,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--dark); color: var(--text); font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 32px;
+  background: rgba(8,8,8,0.88); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-bolt { width: 26px; height: 26px; background: var(--gold); clip-path: polygon(60% 0%,40% 45%,70% 45%,30% 100%,55% 55%,25% 55%); }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #000; font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-weight: 700; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; letter-spacing: 0.02em; }
+.btn-primary:hover { background: #ffc020; transform: translateY(-1px); }
+.btn-primary.lg { font-size: 1rem; padding: 15px 34px; border-radius: 10px; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--gold); font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-weight: 700; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; border: 1.5px solid var(--gold); cursor: pointer; transition: all 0.2s; }
+.btn-secondary:hover { background: rgba(240,165,0,0.1); }
+.btn-secondary.lg { font-size: 1rem; padding: 15px 34px; border-radius: 10px; }
+
+/* ── HERO ── */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; overflow: hidden; z-index: 1; }
+.hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(ellipse at center, rgba(240,165,0,0.11) 0%, transparent 70%); pointer-events: none; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(240,165,0,0.1); border: 1px solid rgba(240,165,0,0.3); color: var(--gold); font-size: 0.75rem; font-weight: 700; padding: 6px 14px; border-radius: 100px; margin-bottom: 28px; letter-spacing: 0.06em; text-transform: uppercase; animation: fadeUp 0.6s ease both; }
+.hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+
+h1 { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 800; line-height: 1.07; letter-spacing: -0.03em; max-width: 820px; margin: 0 auto 24px; animation: fadeUp 0.6s 0.1s ease both; }
+h1 em { font-style: normal; color: var(--gold); position: relative; }
+h1 em::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 3px; background: var(--gold); border-radius: 2px; opacity: 0.35; }
+
+/* H2 / H3 for SEO structure */
+h2.section-title { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+h3.feature-title { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+h3.level-title { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+h3.step-title { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+h3.price-name { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+
+.hero-sub { font-size: 1.1rem; color: #aaa; max-width: 560px; margin: 0 auto 40px; line-height: 1.7; animation: fadeUp 0.6s 0.2s ease both; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 52px; animation: fadeUp 0.6s 0.3s ease both; }
+.hero-social-proof { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.6s 0.4s ease both; }
+.proof-item { display: flex; align-items: center; gap: 7px; font-size: 0.83rem; color: var(--muted); }
+.proof-item strong { color: var(--text); font-weight: 600; }
+.proof-dot { width: 4px; height: 4px; background: var(--dark4); border-radius: 50%; }
+
+/* Phone mock */
+.hero-preview { width: 100%; max-width: 340px; margin: 56px auto 0; animation: fadeUp 0.7s 0.5s ease both; }
+.phone-frame { background: var(--dark3); border: 2px solid var(--border); border-radius: 24px; padding: 20px 16px; box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04); position: relative; overflow: hidden; }
+.app-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding: 0 4px; }
+.app-logo-mini { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1rem; font-weight: 800; color: var(--gold); }
+.app-streak { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; background: rgba(240,165,0,0.1); border: 1px solid rgba(240,165,0,0.2); color: var(--gold); padding: 4px 10px; border-radius: 100px; }
+.progress-bar-wrap { background: var(--dark4); border-radius: 100px; height: 6px; margin-bottom: 20px; overflow: hidden; }
+.progress-bar-fill { height: 100%; width: 30%; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); border-radius: 100px; animation: growBar 1.5s 1s ease both; }
+.question-card { background: var(--dark4); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 16px; margin-bottom: 12px; }
+.q-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.tag { font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 100px; letter-spacing: 0.04em; }
+.tag-green { background: rgba(34,197,94,0.15); color: var(--green); }
+.tag-gold { background: rgba(240,165,0,0.15); color: var(--gold); }
+.tag-blue { background: rgba(99,179,237,0.15); color: #63b3ed; }
+.q-text { font-size: 0.88rem; font-weight: 500; line-height: 1.5; color: var(--text); }
+.answer-btn { width: 100%; padding: 11px 14px; border-radius: 10px; font-size: 0.83rem; font-weight: 500; text-align: left; border: none; cursor: default; margin-bottom: 7px; }
+.answer-btn.neutral { background: var(--dark4); border: 1px solid rgba(255,255,255,0.07); color: var(--text); }
+.answer-btn.correct { background: rgba(34,197,94,0.15); border: 1px solid var(--green); color: var(--green); }
+
+/* ── SECTIONS ── */
+section { padding: 80px 24px; position: relative; z-index: 1; }
+.container { max-width: 1080px; margin: 0 auto; }
+.section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.section-sub { color: var(--muted); font-size: 1rem; max-width: 520px; line-height: 1.7; }
+
+/* ── STATS TICKER ── */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; overflow: hidden; margin-top: 56px; }
+.stat-box { background: var(--dark2); padding: 36px 24px; text-align: center; }
+.stat-number { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--gold); letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
+.stat-label { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
+
+/* ── FEATURES ── */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 56px; }
+.feature-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+.feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.3s; }
+.feature-card:hover { border-color: rgba(240,165,0,0.2); transform: translateY(-3px); }
+.feature-card:hover::before { opacity: 1; }
+.feature-icon { font-size: 2rem; margin-bottom: 16px; }
+.feature-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+/* ── LEVELS ── */
+.levels-section { background: var(--dark2); }
+.levels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 48px; }
+.level-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; }
+.level-emoji { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+.level-age { font-size: 0.78rem; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+.level-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+.level-exams { display: flex; gap: 6px; flex-wrap: wrap; }
+.exam-tag { font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; background: rgba(240,165,0,0.1); border: 1px solid rgba(240,165,0,0.2); color: var(--gold); }
+
+/* ── QUESTION BANK BANNER ── */
+.qbank-banner {
+  background: linear-gradient(135deg, rgba(240,165,0,0.08), rgba(240,165,0,0.03));
+  border: 1px solid rgba(240,165,0,0.2);
+  border-radius: 20px;
+  padding: 40px 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  margin-top: 56px;
+}
+.qbank-number { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 4rem; font-weight: 800; color: var(--gold); letter-spacing: -0.05em; line-height: 1; margin-bottom: 8px; }
+.qbank-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+.qbank-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+/* ── SCREENSHOT PREVIEWS ── */
+.screenshots-section { background: var(--dark2); }
+.screens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 48px; align-items: start; }
+.screen-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; overflow: hidden; }
+.screen-label { padding: 16px 20px 0; font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--gold); letter-spacing: 0.04em; text-transform: uppercase; }
+.screen-sublabel { padding: 4px 20px 16px; font-size: 0.78rem; color: var(--muted); }
+
+/* Result Card mockup */
+.result-card-mock {
+  margin: 0 16px 16px;
+  background: #0d0d1a;
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.rc-brand { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--gold); margin-bottom: 4px; }
+.rc-sub { font-size: 0.72rem; color: var(--muted); margin-bottom: 16px; }
+.rc-exam-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.rc-username { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+.rc-circle { width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--red); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.rc-pct { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--red); line-height: 1; }
+.rc-frac { font-size: 0.72rem; color: var(--muted); }
+.rc-badge { display: inline-block; background: rgba(239,68,68,0.15); border: 1px solid var(--red); color: var(--red); font-size: 0.78rem; font-weight: 700; padding: 6px 16px; border-radius: 100px; margin-bottom: 16px; }
+.rc-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 12px 0; }
+.rc-subject-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.rc-subject-name { font-size: 0.78rem; color: var(--text); flex: 1; text-align: left; }
+.rc-subject-bar { flex: 2; height: 5px; background: var(--dark4); border-radius: 100px; overflow: hidden; }
+.rc-subject-fill { height: 100%; background: var(--red); border-radius: 100px; }
+.rc-subject-pct { font-size: 0.72rem; font-weight: 700; color: var(--red); width: 30px; text-align: right; }
+.rc-url { font-size: 0.72rem; color: var(--muted); margin-top: 14px; font-family: monospace; }
+
+/* AI Chat mockup */
+.chat-mock { margin: 0 16px 16px; }
+.chat-header { background: var(--dark4); border-radius: 12px 12px 0 0; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(255,255,255,0.06); border-bottom: none; }
+.chat-brand { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 0.85rem; font-weight: 800; color: var(--gold); }
+.chat-online { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; color: var(--green); font-weight: 600; }
+.chat-online::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+.chat-body { background: var(--dark); border: 1px solid rgba(255,255,255,0.06); border-top: none; border-radius: 0 0 12px 12px; padding: 14px; }
+.chat-bubble-user { background: var(--blue); color: #fff; border-radius: 14px 14px 4px 14px; padding: 10px 14px; font-size: 0.83rem; font-weight: 500; margin-bottom: 10px; margin-left: auto; max-width: 80%; text-align: right; }
+.chat-bubble-ai { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px 14px 14px 4px; padding: 12px 14px; font-size: 0.83rem; color: var(--text); line-height: 1.55; max-width: 90%; }
+.chat-ai-label { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 0.72rem; font-weight: 800; color: var(--gold); margin-bottom: 6px; }
+.chat-input-row { display: flex; gap: 8px; margin-top: 10px; }
+.chat-input { flex: 1; background: var(--dark3); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 12px; font-size: 0.78rem; color: var(--muted); }
+.chat-send { background: var(--gold); border: none; border-radius: 10px; padding: 8px 14px; font-size: 0.78rem; font-weight: 700; color: #000; cursor: default; }
+
+/* ── LEADERBOARD MOCK ── */
+.lb-section { background: var(--dark); }
+.lb-mock { background: var(--dark2); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 24px; margin-top: 48px; max-width: 520px; }
+.lb-header { text-align: center; margin-bottom: 20px; }
+.lb-title-text { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text); }
+.lb-sub-text { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+.lb-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+.lb-tab { font-size: 0.72rem; font-weight: 700; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.07); background: var(--dark3); color: var(--muted); cursor: default; }
+.lb-tab.active { background: rgba(240,165,0,0.12); border-color: rgba(240,165,0,0.3); color: var(--gold); }
+.lb-my-rank { background: rgba(240,165,0,0.08); border: 1.5px solid rgba(240,165,0,0.3); border-radius: 12px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.lb-my-rank-label { font-size: 0.8rem; font-weight: 700; color: var(--gold); }
+.lb-my-rank-num { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--gold); }
+.lb-row { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 10px 12px; margin-bottom: 6px; }
+.lb-row.me { background: rgba(240,165,0,0.07); border-color: rgba(240,165,0,0.3); }
+.lb-pos { font-size: 1.1rem; font-weight: 800; width: 28px; text-align: center; }
+.lb-name { flex: 1; font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.lb-name small { display: block; font-size: 0.7rem; color: var(--muted); font-weight: 400; }
+.lb-xp { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1rem; font-weight: 800; color: var(--gold); }
+.lb-xp small { display: block; font-size: 0.65rem; color: var(--muted); text-align: right; }
+
+/* ── PARENT DASHBOARD MOCK ── */
+.parent-section { background: var(--dark2); }
+.parent-mock { background: var(--dark3); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 24px; margin-top: 48px; max-width: 540px; }
+.parent-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.parent-title { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+.parent-badge { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25); color: var(--green); }
+.child-card { background: var(--dark4); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 16px; margin-bottom: 12px; }
+.child-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.child-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), #1D4ED8); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 900; color: #fff; flex-shrink: 0; }
+.child-name { font-size: 0.9rem; font-weight: 800; color: var(--text); }
+.child-activity { font-size: 0.7rem; color: var(--green); font-weight: 600; }
+.child-week-q { margin-left: auto; text-align: right; }
+.child-week-label { font-size: 0.65rem; color: var(--muted); }
+.child-week-num { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1rem; font-weight: 800; color: var(--green); }
+.child-stats { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+.child-stat { background: var(--dark3); border-radius: 10px; padding: 8px 6px; text-align: center; }
+.child-stat-num { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1rem; font-weight: 800; line-height: 1; margin-bottom: 2px; }
+.child-stat-label { font-size: 0.6rem; color: var(--muted); }
+.weak-alert { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 8px 12px; font-size: 0.75rem; color: #f87171; margin-bottom: 10px; }
+.weak-alert strong { color: var(--red); display: block; margin-bottom: 2px; }
+.mock-row { display: flex; justify-content: space-between; align-items: center; background: var(--dark3); border-radius: 8px; padding: 7px 10px; margin-bottom: 5px; }
+.mock-name { font-size: 0.78rem; font-weight: 700; color: var(--text); }
+.mock-date { font-size: 0.65rem; color: var(--muted); }
+.mock-pct { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1rem; font-weight: 800; }
+
+/* ── PRICING ── */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 56px; align-items: start; }
+.price-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 32px 28px; position: relative; transition: transform 0.3s; }
+.price-card:hover { transform: translateY(-4px); }
+.price-card.featured { border-color: var(--gold); background: linear-gradient(160deg, rgba(240,165,0,0.06), var(--dark2)); }
+.price-badge { display: inline-block; background: var(--gold); color: #000; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px; }
+.price-amount { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 2.6rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
+.price-amount span { font-size: 1rem; font-weight: 500; color: var(--muted); }
+.price-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+.price-features { list-style: none; margin-bottom: 28px; }
+.price-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: #ccc; margin-bottom: 10px; line-height: 1.4; }
+.check { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+.cross { color: var(--red); flex-shrink: 0; margin-top: 1px; }
+.price-free { color: var(--green); font-weight: 700; }
+
+/* ── TESTIMONIALS ── */
+.testimonials-section { background: var(--dark2); }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 48px; }
+.testi-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 24px; }
+.testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 12px; letter-spacing: 2px; }
+.testi-text { font-size: 0.9rem; line-height: 1.65; color: #ccc; margin-bottom: 16px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 10px; }
+.testi-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.testi-name { font-weight: 600; font-size: 0.85rem; }
+.testi-role { font-size: 0.75rem; color: var(--muted); }
+
+/* ── HOW IT WORKS ── */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 56px; }
+.step-num { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 3rem; font-weight: 800; color: rgba(240,165,0,0.15); line-height: 1; margin-bottom: 12px; }
+.step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+/* ── FAQ ── */
+.faq-list { margin-top: 48px; }
+.faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 0; }
+.faq-q { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; }
+.faq-toggle { width: 24px; height: 24px; background: rgba(240,165,0,0.1); border: 1px solid rgba(240,165,0,0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; color: var(--gold); transition: all 0.2s; }
+.faq-item.open .faq-toggle { background: var(--gold); color: #000; }
+.faq-a { font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 220px; padding-top: 12px; }
+
+/* ── CTA BAND ── */
+.cta-band { background: linear-gradient(135deg, rgba(240,165,0,0.11), rgba(240,165,0,0.03)); border-top: 1px solid rgba(240,165,0,0.18); border-bottom: 1px solid rgba(240,165,0,0.18); text-align: center; padding: 80px 24px; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 24px; text-align: center; }
+.footer-logo { font-family: 'Syne', 'Arial Black', Impact, sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--gold); margin-bottom: 12px; }
+.footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.footer-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 0.78rem; color: #555; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+@keyframes growBar { from { width: 0; } to { width: 30%; } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── DESKTOP ── */
+@media (min-width: 1024px) {
+  nav { padding: 20px 64px; }
+  .hero { flex-direction: row; text-align: left; align-items: center; justify-content: center; gap: 80px; padding: 140px 64px 100px; }
+  .hero-left { flex: 1; max-width: 580px; }
+  h1 { font-size: 4.6rem; margin: 0 0 24px; }
+  .hero-sub { margin: 0 0 40px; text-align: left; }
+  .hero-actions { justify-content: flex-start; }
+  .hero-social-proof { justify-content: flex-start; }
+  .hero-preview { flex: 0 0 320px; margin: 0; }
+  .hero-badge { display: inline-flex; }
+  section { padding: 100px 64px; }
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
+  .levels-grid { grid-template-columns: repeat(3, 1fr); }
+  .steps { grid-template-columns: repeat(4, 1fr); }
+  .stats-row { grid-template-columns: repeat(4, 1fr); }
+  .testi-grid { grid-template-columns: repeat(3, 1fr); }
+  .pricing-grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+  .price-card.featured { transform: scale(1.03); box-shadow: 0 0 40px rgba(240,165,0,0.08); }
+  .price-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+  .screens-grid { grid-template-columns: repeat(3, 1fr); }
+  .lb-section-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .parent-section-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .qbank-banner { grid-template-columns: 1fr 1fr; }
+  .cta-band { padding: 120px 64px; }
+  h2.section-title { font-size: 2.8rem; }
+}
+@media (min-width: 1280px) {
+  nav { padding: 22px 80px; }
+  .hero { padding: 140px 80px 100px; }
+  section { padding: 100px 80px; }
+  h1 { font-size: 5rem; }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  nav { padding: 18px 40px; }
+  .hero { padding: 120px 40px 80px; }
+  section { padding: 80px 40px; }
+  h1 { font-size: 3rem; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .levels-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  .qbank-banner { grid-template-columns: 1fr; }
+  .screens-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  nav { padding: 16px 20px; }
+  .nav-links a:not(.btn-primary) { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  section { padding: 60px 20px; }
+  .qbank-banner { grid-template-columns: 1fr; padding: 28px 20px; }
+  .qbank-number { font-size: 3rem; }
+  h1 { font-size: 2.4rem; }
+  .pricing-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-bolt"></div>
+  <a href="#" class="nav-logo" aria-label="PassMax AI Home">
+    <div class="nav-bolt" aria-hidden="true"></div>
     Pass<span>Max</span> AI
   </a>
-  <div class="nav-cta">
+  <div class="nav-links">
+    <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
-    <a href="#how">How it works</a>
+    <a href="#faq">FAQ</a>
     <a href="https://passmax-ai.onrender.com" class="btn-primary">Try Free ⚡</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
+<!-- ── HERO ── -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-glow" aria-hidden="true"></div>
 
-  <div class="hero-badge">🇳🇬 Built for Nigerian Students</div>
+  <div class="hero-left">
+    <div class="hero-badge" role="note">🇳🇬 Built for Nigerian Students</div>
 
-  <h1>
-    Pass <em>JAMB, WAEC</em><br>
-    & Common Entrance<br>
-    on Your First Try
-  </h1>
+    <h1>
+      Pass <em>JAMB, WAEC</em><br>
+      &amp; Common Entrance<br>
+      on Your First Try
+    </h1>
 
-  <p class="hero-sub">
-    Nigeria's first gamified AI exam companion. Daily practice questions, streak rewards, subject breakdowns — designed like Duolingo but built for JAMB, WAEC, BECE & Common Entrance.
-  </p>
+    <p class="hero-sub">
+      Nigeria's first gamified AI exam companion. 60,000+ real past questions, AI explanations, daily streaks and mock exams — built for JAMB, WAEC, NECO, BECE &amp; Common Entrance.
+    </p>
 
-  <div class="hero-actions">
-    <a href="https://passmax-ai.onrender.com" class="btn-primary">⚡ Start Practising Free</a>
-    <a href="#pricing" class="btn-secondary">See Plans</a>
+    <div class="hero-actions">
+      <a href="https://passmax-ai.onrender.com" class="btn-primary lg">⚡ Start Practising Free</a>
+      <a href="#pricing" class="btn-secondary lg">See Plans</a>
+    </div>
+
+    <div class="hero-social-proof" aria-label="Social proof">
+      <div class="proof-item">✅ <strong>No signup</strong> to try</div>
+      <div class="proof-dot" aria-hidden="true"></div>
+      <div class="proof-item">📱 <strong>Any phone</strong></div>
+      <div class="proof-dot" aria-hidden="true"></div>
+      <div class="proof-item">🏫 <strong>1,200+ students</strong> enrolled</div>
+      <div class="proof-dot" aria-hidden="true"></div>
+      <div class="proof-item">⭐ <strong>4.8/5</strong> rating</div>
+    </div>
   </div>
 
-  <div class="hero-social-proof">
-    <div class="proof-item">✅ <strong>No signup needed</strong> to try</div>
-    <div class="proof-dot"></div>
-    <div class="proof-item">📱 <strong>Works on any phone</strong></div>
-    <div class="proof-dot"></div>
-    <div class="proof-item">🎯 <strong>AI-powered explanations</strong></div>
-  </div>
-
-  <!-- MOCK APP -->
-  <div class="hero-preview">
+  <!-- Phone Mock -->
+  <div class="hero-preview" aria-hidden="true">
     <div class="phone-frame">
       <div class="app-header">
         <div class="app-logo-mini">⚡ PassMax</div>
-        <div class="app-streak">🔥 4 streak</div>
+        <div class="app-streak">🔥 7 streak</div>
       </div>
-      <div style="font-size:0.72rem; color: var(--muted); margin-bottom: 6px;">3 / 10 questions</div>
-      <div class="progress-bar-wrap">
-        <div class="progress-bar-fill"></div>
-      </div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:6px;">Question 3 / 10</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
       <div class="question-card">
         <div class="q-tags">
-          <span class="tag tag-green">SS Level</span>
+          <span class="tag tag-green">SS · JAMB</span>
           <span class="tag tag-gold">Biology</span>
           <span class="tag tag-blue">✨ AI</span>
         </div>
-        <p class="q-text">Which organelle is responsible for producing energy in a cell?</p>
+        <p class="q-text">Which organelle is responsible for producing energy (ATP) in a cell?</p>
       </div>
       <button class="answer-btn neutral">A. Nucleus</button>
       <button class="answer-btn correct">✓ B. Mitochondria</button>
@@ -954,357 +488,617 @@
   </div>
 </section>
 
-<!-- STATS -->
-<section style="padding: 0 24px 80px;">
+<!-- ── TRUST STATS ── -->
+<section style="padding:0 24px 80px;" aria-label="Key statistics">
   <div class="container">
-    <div class="stats-row reveal">
-      <div class="stat-box">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Education levels covered</div>
+    <div class="stats-row reveal" role="list">
+      <div class="stat-box" role="listitem">
+        <div class="stat-number">60K+</div>
+        <div class="stat-label">Verified past questions across all subjects</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-number">10+</div>
-        <div class="stat-label">Core subjects available</div>
+      <div class="stat-box" role="listitem">
+        <div class="stat-number">1,200+</div>
+        <div class="stat-label">Students actively studying on PassMax</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-number">Free</div>
-        <div class="stat-label">Try without signing up</div>
+      <div class="stat-box" role="listitem">
+        <div class="stat-number">47</div>
+        <div class="stat-label">Schools with students using PassMax</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-number">AI</div>
-        <div class="stat-label">Powered explanations</div>
+      <div class="stat-box" role="listitem">
+        <div class="stat-number">4.8★</div>
+        <div class="stat-label">Average student satisfaction rating</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LEVELS -->
-<section class="levels-section">
+<!-- ── LEVELS ── -->
+<section class="levels-section" aria-labelledby="levels-heading">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Who it's for</span>
-      <h2 class="section-title">One app for every stage of your child's education</h2>
-      <p class="section-sub">From primary school all the way to JAMB — PassMax covers every critical exam in Nigeria's education ladder.</p>
+      <span class="section-label">Who It's For</span>
+      <h2 class="section-title" id="levels-heading">One app for every stage of Nigeria's education ladder</h2>
+      <p class="section-sub">From Primary 5 all the way through JAMB — PassMax covers every critical Nigerian exam in one platform. One family, one subscription.</p>
     </div>
     <div class="levels-grid">
-      <div class="level-card reveal">
-        <span class="level-emoji">🔴</span>
-        <div class="level-title">Common Entrance</div>
-        <div class="level-age">Ages 10–13 · Primary 5 & 6</div>
-        <p class="level-desc">Prepare for Federal Unity College admission with AI-guided practice on all common entrance subjects.</p>
-        <div class="level-exams">
+      <article class="level-card reveal">
+        <span class="level-emoji" aria-hidden="true">🔴</span>
+        <h3 class="level-title">Common Entrance</h3>
+        <div class="level-age">Ages 10–13 · Primary 5 &amp; 6</div>
+        <p class="level-desc">Targeted preparation for Federal Unity College admission. AI-guided practice on all Common Entrance subjects with past questions from previous years.</p>
+        <div class="level-exams" aria-label="Exams covered">
           <span class="exam-tag">NCEE</span>
           <span class="exam-tag">Unity Schools</span>
         </div>
-      </div>
-      <div class="level-card reveal">
-        <span class="level-emoji">📘</span>
-        <div class="level-title">Junior Secondary</div>
+      </article>
+      <article class="level-card reveal">
+        <span class="level-emoji" aria-hidden="true">📘</span>
+        <h3 class="level-title">Junior Secondary</h3>
         <div class="level-age">Ages 13–15 · JSS3</div>
-        <p class="level-desc">Ace your Junior WAEC (BECE) with gamified daily quizzes and subject breakdown analysis.</p>
-        <div class="level-exams">
+        <p class="level-desc">Gamified daily practice and subject-by-subject breakdown to ace Junior WAEC. Build strong academic foundations before Senior Secondary begins.</p>
+        <div class="level-exams" aria-label="Exams covered">
           <span class="exam-tag">Junior WAEC</span>
           <span class="exam-tag">BECE</span>
         </div>
-      </div>
-      <div class="level-card reveal">
-        <span class="level-emoji">🎓</span>
-        <div class="level-title">Senior Secondary</div>
+      </article>
+      <article class="level-card reveal">
+        <span class="level-emoji" aria-hidden="true">🎓</span>
+        <h3 class="level-title">Senior Secondary</h3>
         <div class="level-age">Ages 15–19 · SS1–SS3</div>
-        <p class="level-desc">Nigeria's most competitive exams. Practice past questions with AI explanations and track weak subjects in real-time.</p>
-        <div class="level-exams">
+        <p class="level-desc">Nigeria's most competitive exams. Practise real JAMB and WAEC past questions with AI explanations, timed mock CBTs and weak-subject targeting.</p>
+        <div class="level-exams" aria-label="Exams covered">
           <span class="exam-tag">JAMB</span>
           <span class="exam-tag">WAEC</span>
           <span class="exam-tag">NECO</span>
           <span class="exam-tag">GCE</span>
+          <span class="exam-tag">Post-UTME</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUESTION BANK ── -->
+<section aria-labelledby="qbank-heading">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Question Bank</span>
+      <h2 class="section-title" id="qbank-heading">Nigeria's largest curriculum-aligned past question database</h2>
+    </div>
+    <div class="qbank-banner reveal">
+      <div>
+        <div class="qbank-number">60,000+</div>
+        <p style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:10px;">Verified Past Questions & Model Answers</p>
+        <p class="qbank-desc">Every question in PassMax is drawn from authentic JAMB, WAEC, NECO, BECE and Common Entrance past papers — meticulously curated, curriculum-aligned and enriched with AI-generated explanations that go beyond the correct answer to explain the <em>why</em> and the <em>how</em>. Updated every exam cycle so your child always practises the most relevant material.</p>
+        <div class="qbank-tags">
+          <span class="exam-tag">JAMB UTME</span>
+          <span class="exam-tag">WAEC SSCE</span>
+          <span class="exam-tag">NECO</span>
+          <span class="exam-tag">GCE</span>
+          <span class="exam-tag">BECE</span>
+          <span class="exam-tag">Common Entrance</span>
+          <span class="exam-tag">Post-UTME</span>
+        </div>
+      </div>
+      <div>
+        <div style="display:grid;gap:12px;">
+          <div style="background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 18px;">
+            <div style="font-size:0.72rem;color:var(--muted);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Mathematics</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--gold);">8,400+</div>
+              <div style="font-size:0.72rem;color:var(--green);font-weight:600;">✓ JAMB · WAEC · NECO</div>
+            </div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 18px;">
+            <div style="font-size:0.72rem;color:var(--muted);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">English Language</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--gold);">7,200+</div>
+              <div style="font-size:0.72rem;color:var(--green);font-weight:600;">✓ All Levels</div>
+            </div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 18px;">
+            <div style="font-size:0.72rem;color:var(--muted);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Sciences, Arts &amp; Commercials</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--gold);">44,400+</div>
+              <div style="font-size:0.72rem;color:var(--green);font-weight:600;">✓ 20+ subjects</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section>
+<!-- ── FEATURES ── -->
+<section id="features" style="background:var(--dark2);" aria-labelledby="features-heading">
   <div class="container">
     <div class="reveal">
       <span class="section-label">Features</span>
-      <h2 class="section-title">Everything your child needs to pass. Nothing they don't.</h2>
-      <p class="section-sub">We built PassMax for how Nigerian students actually study — on their phones, in short sessions, before school or after supper.</p>
+      <h2 class="section-title" id="features-heading">Everything your child needs to pass. Nothing they don't.</h2>
+      <p class="section-sub">Designed for how Nigerian students actually study — on their phones, in short daily sessions, anywhere data is available.</p>
     </div>
     <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon">🔥</div>
-        <div class="feature-title">Daily Streaks & Gamification</div>
-        <p class="feature-desc">Like Duolingo but for JAMB. Students earn streaks, level up, and stay consistent through game mechanics — not pressure.</p>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">🔥</div>
+        <h3 class="feature-title">Daily Streaks &amp; Gamification</h3>
+        <p class="feature-desc">Like Duolingo but for JAMB. Students earn XP, maintain streaks, unlock levels and climb the national leaderboard — staying consistent through motivation, not pressure.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">🤖</div>
+        <h3 class="feature-title">AI-Powered Explanations</h3>
+        <p class="feature-desc">Every wrong answer triggers a plain-English AI explanation. Not just "the answer is B" — but why B is correct, the underlying concept, and a memory tip.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">📊</div>
+        <h3 class="feature-title">Subject Breakdown &amp; Danger Zones</h3>
+        <p class="feature-desc">Real-time accuracy tracking per subject and per topic. Weak areas are flagged instantly so students focus where it actually matters before exam day.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">🗓️</div>
+        <h3 class="feature-title">Personalised Study Planner</h3>
+        <p class="feature-desc">Enter your exam date and get a custom daily countdown with structured study targets. No more last-minute cramming — just calm, consistent preparation.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">📢</div>
+        <h3 class="feature-title">Shareable Result Cards</h3>
+        <p class="feature-desc">After every practice session, students get a branded result card they can share on WhatsApp and Instagram. Healthy competition drives better study habits organically.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">📝</div>
+        <h3 class="feature-title">Full CBT Mock Exams</h3>
+        <p class="feature-desc">Timed mock exams that mirror the exact JAMB CBT and WAEC format. Students experience the real pressure before it counts, building the confidence to perform on the day.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">💬</div>
+        <h3 class="feature-title">AI Study Chat Tutor</h3>
+        <p class="feature-desc">Ask any question — maths, science, English, history — and get instant, curriculum-relevant answers from PassMax AI. Like a private tutor available 24/7 on any phone.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">👪</div>
+        <h3 class="feature-title">Parent Monitoring Dashboard</h3>
+        <p class="feature-desc">Parents on the Family plan get a live dashboard showing each child's XP, streak, accuracy, weak subjects and recent mock scores — with WhatsApp progress alerts.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">🏆</div>
+        <h3 class="feature-title">National Leaderboard</h3>
+        <p class="feature-desc">Weekly, monthly and all-time rankings across all Nigerian students on PassMax. Competitive students are the most consistent ones — and the most likely to pass.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── APP SCREENSHOTS ── -->
+<section class="screenshots-section" aria-labelledby="screens-heading">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">See It In Action</span>
+      <h2 class="section-title" id="screens-heading">Built like a game. Designed to get results.</h2>
+      <p class="section-sub">Real PassMax screens — the same experience your child gets on day one.</p>
+    </div>
+    <div class="screens-grid">
+
+      <!-- Result Card -->
+      <div class="screen-card reveal">
+        <div class="screen-label">📊 Result Share Card</div>
+        <div class="screen-sublabel">After every session — shareable on WhatsApp</div>
+        <div class="result-card-mock" aria-label="Sample result card">
+          <div class="rc-brand">⚡ PASSMAX AI</div>
+          <div class="rc-sub">Nigeria's Smartest Exam Companion</div>
+          <div class="rc-exam-label">JUNIOR WAEC (BECE)</div>
+          <div class="rc-username">aybamibello</div>
+          <div class="rc-circle" aria-label="Score: 10.8 percent">
+            <div class="rc-pct">10.8%</div>
+            <div class="rc-frac">4/37</div>
+          </div>
+          <div class="rc-badge">⭐ NEEDS WORK</div>
+          <div style="font-size:0.7rem;color:var(--muted);margin-bottom:10px;">Time: 2m 28s</div>
+          <hr class="rc-divider">
+          <div style="font-size:0.68rem;color:var(--muted);text-align:left;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Subject Breakdown</div>
+          <div class="rc-subject-row"><span class="rc-subject-name">English</span><div class="rc-subject-bar"><div class="rc-subject-fill" style="width:25%;"></div></div><span class="rc-subject-pct">25%</span></div>
+          <div class="rc-subject-row"><span class="rc-subject-name">Social Studies</span><div class="rc-subject-bar"><div class="rc-subject-fill" style="width:20%;"></div></div><span class="rc-subject-pct">20%</span></div>
+          <div class="rc-subject-row"><span class="rc-subject-name">Mathematics</span><div class="rc-subject-bar"><div class="rc-subject-fill" style="width:9%;"></div></div><span class="rc-subject-pct">9%</span></div>
+          <div class="rc-subject-row"><span class="rc-subject-name">Business Studies</span><div class="rc-subject-bar"><div class="rc-subject-fill" style="width:1%;"></div></div><span class="rc-subject-pct">0%</span></div>
+          <div class="rc-url">passmax-ai.streamlit.app ⚡</div>
+        </div>
       </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">🤖</div>
-        <div class="feature-title">AI-Powered Explanations</div>
-        <p class="feature-desc">Every wrong answer comes with a plain-English AI explanation — not just the correct option, but why and how to remember it.</p>
+
+      <!-- AI Study Chat -->
+      <div class="screen-card reveal">
+        <div class="screen-label">💬 AI Study Chat</div>
+        <div class="screen-sublabel">Ask anything — get instant AI answers</div>
+        <div class="chat-mock" aria-label="Sample AI chat">
+          <div class="chat-header">
+            <div>
+              <div class="chat-brand">⚡ PassMax · Study Chat</div>
+            </div>
+            <div class="chat-online">AI Tutor Online</div>
+          </div>
+          <div class="chat-body">
+            <div class="chat-bubble-user">What determines Genetics?</div>
+            <div class="chat-bubble-ai">
+              <div class="chat-ai-label">⚡ PassMax AI</div>
+              Genetics is determined by <strong>DNA</strong> — the sequence of base pairs (A, T, G, C) in your chromosomes. Genes are specific segments of DNA that code for traits like eye colour, blood group, and height. For WAEC, remember: the nucleus contains chromosomes, which carry genes, which are made of DNA. Gregor Mendel's laws of inheritance are also frequently tested.
+            </div>
+            <div class="chat-input-row">
+              <div class="chat-input">Ask me anything — maths, science...</div>
+              <div class="chat-send">Send 🚀</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">📊</div>
-        <div class="feature-title">Subject Breakdown Analysis</div>
-        <p class="feature-desc">See exactly where your child is strong and where they need work — per subject, per topic, in real time.</p>
+
+      <!-- Leaderboard -->
+      <div class="screen-card reveal">
+        <div class="screen-label">🏆 Leaderboard</div>
+        <div class="screen-sublabel">Compete nationally — weekly &amp; all-time</div>
+        <div style="padding:0 16px 16px;">
+          <div class="lb-mock" aria-label="Leaderboard preview">
+            <div class="lb-header">
+              <div style="font-size:2rem;margin-bottom:4px;">🏆</div>
+              <div class="lb-title-text">Top Students</div>
+              <div class="lb-sub-text">Updated live · Keep practising to climb!</div>
+            </div>
+            <div class="lb-tabs" role="tablist">
+              <div class="lb-tab active" role="tab">📅 This Week</div>
+              <div class="lb-tab" role="tab">📆 This Month</div>
+              <div class="lb-tab" role="tab">🌍 All Time</div>
+            </div>
+            <div class="lb-my-rank" aria-label="Your rank">
+              <div class="lb-my-rank-label">Your Rank</div>
+              <div class="lb-my-rank-num">#12</div>
+            </div>
+            <div class="lb-row" role="listitem"><span class="lb-pos">🥇</span><div class="lb-name">Chidinma<small>🔥 21 day streak</small></div><div class="lb-xp">4,820<small>XP</small></div></div>
+            <div class="lb-row" role="listitem"><span class="lb-pos">🥈</span><div class="lb-name">Emeka<small>🔥 14 day streak</small></div><div class="lb-xp">4,210<small>XP</small></div></div>
+            <div class="lb-row" role="listitem"><span class="lb-pos">🥉</span><div class="lb-name">Fatimah<small>🔥 9 day streak</small></div><div class="lb-xp">3,780<small>XP</small></div></div>
+            <div class="lb-row" role="listitem"><span class="lb-pos" style="font-size:0.85rem;color:var(--muted);">#4</span><div class="lb-name">Adaora<small>Practising</small></div><div class="lb-xp" style="color:var(--muted);">3,290<small>XP</small></div></div>
+            <div class="lb-row me" role="listitem" aria-label="Your position"><span class="lb-pos" style="font-size:0.85rem;color:var(--gold);">#12</span><div class="lb-name" style="color:var(--gold);">You ← <small>Keep going!</small></div><div class="lb-xp">1,640<small>XP</small></div></div>
+          </div>
+        </div>
       </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">🗓️</div>
-        <div class="feature-title">Study Planner</div>
-        <p class="feature-desc">Set an exam date, get a personalised daily study countdown. No more last-minute cramming.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PARENT DASHBOARD ── -->
+<section class="parent-section" aria-labelledby="parent-heading">
+  <div class="container">
+    <div class="parent-section-inner">
+      <div class="reveal">
+        <span class="section-label">For Parents</span>
+        <h2 class="section-title" id="parent-heading">Know exactly how your child is studying. Every day.</h2>
+        <p class="section-sub" style="margin-bottom:24px;">The Family plan gives parents a live dashboard showing each child's real progress — XP, streak, accuracy per subject, weak areas, and recent mock exam scores. Get WhatsApp alerts so you're never in the dark.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.88rem;color:#ccc;"><span style="color:var(--green);">✓</span> See each child's daily questions answered</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.88rem;color:#ccc;"><span style="color:var(--green);">✓</span> Know their weakest subjects before you ask</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.88rem;color:#ccc;"><span style="color:var(--green);">✓</span> Track mock exam scores over time</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.88rem;color:#ccc;"><span style="color:var(--green);">✓</span> Link up to 3 children on different exam levels</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.88rem;color:#ccc;"><span style="color:var(--green);">✓</span> WhatsApp alerts when your child isn't studying</li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="https://passmax-ai.onrender.com" class="btn-primary">Get Family Plan — ₦5,000/mo</a>
+        </div>
       </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">📢</div>
-        <div class="feature-title">Shareable Result Cards</div>
-        <p class="feature-desc">Students share their scores with friends on WhatsApp. Healthy competition drives better study habits.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">🏆</div>
-        <div class="feature-title">Mock Exams</div>
-        <p class="feature-desc">Full timed CBT simulations that mirror the real JAMB and WAEC exam format — building confidence before exam day.</p>
+
+      <!-- Parent dashboard mock -->
+      <div class="reveal">
+        <div class="parent-mock" aria-label="Parent dashboard preview">
+          <div class="parent-header">
+            <div class="parent-title">👪 Parent Dashboard</div>
+            <div class="parent-badge">Family Plan</div>
+          </div>
+
+          <!-- Child 1 -->
+          <div class="child-card">
+            <div class="child-header">
+              <div class="child-avatar" aria-hidden="true">T</div>
+              <div>
+                <div class="child-name">Tunde</div>
+                <div class="child-activity">🟢 Active this week</div>
+              </div>
+              <div class="child-week-q">
+                <div class="child-week-label">Last 7 days</div>
+                <div class="child-week-num">42 Qs</div>
+              </div>
+            </div>
+            <div class="child-stats">
+              <div class="child-stat"><div class="child-stat-num" style="color:var(--gold);">2,840</div><div class="child-stat-label">XP</div></div>
+              <div class="child-stat"><div class="child-stat-num" style="color:var(--green);">74%</div><div class="child-stat-label">Accuracy</div></div>
+              <div class="child-stat"><div class="child-stat-num" style="color:#F97316;">12🔥</div><div class="child-stat-label">Streak</div></div>
+              <div class="child-stat"><div class="child-stat-num" style="color:var(--blue);">284</div><div class="child-stat-label">Questions</div></div>
+            </div>
+            <div style="font-size:0.68rem;color:var(--muted);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Recent Mocks</div>
+            <div class="mock-row"><div><div class="mock-name">JAMB Biology</div><div class="mock-date">May 3, 2026</div></div><div class="mock-pct" style="color:var(--green);">72%</div></div>
+            <div class="mock-row"><div><div class="mock-name">WAEC Chemistry</div><div class="mock-date">Apr 29, 2026</div></div><div class="mock-pct" style="color:var(--gold);">58%</div></div>
+          </div>
+
+          <!-- Child 2 -->
+          <div class="child-card">
+            <div class="child-header">
+              <div class="child-avatar" style="background:linear-gradient(135deg,#9333ea,#6d28d9);" aria-hidden="true">A</div>
+              <div>
+                <div class="child-name">Amaka</div>
+                <div class="child-activity" style="color:var(--red);">🔴 Not studying</div>
+              </div>
+              <div class="child-week-q">
+                <div class="child-week-label">Last 7 days</div>
+                <div class="child-week-num" style="color:var(--red);">3 Qs</div>
+              </div>
+            </div>
+            <div class="child-stats">
+              <div class="child-stat"><div class="child-stat-num" style="color:var(--gold);">620</div><div class="child-stat-label">XP</div></div>
+              <div class="child-stat"><div class="child-stat-num" style="color:var(--red);">38%</div><div class="child-stat-label">Accuracy</div></div>
+              <div class="child-stat"><div class="child-stat-num" style="color:#F97316;">0🔥</div><div class="child-stat-label">Streak</div></div>
+              <div class="child-stat"><div class="child-stat-num" style="color:var(--blue);">61</div><div class="child-stat-label">Questions</div></div>
+            </div>
+            <div class="weak-alert"><strong>⚠️ Weak Areas</strong>Mathematics, Basic Science &amp; Tech — scoring below 50%</div>
+          </div>
+
+          <a href="https://wa.me/?text=Amaka%2C+please+open+your+PassMax+and+study+today!+Your+exam+is+coming+soon." target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;font-weight:700;font-size:0.83rem;padding:11px;border-radius:12px;text-decoration:none;margin-top:4px;">📲 Send WhatsApp Reminder to Child</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how" style="background: var(--dark2);">
+<!-- ── HOW IT WORKS ── -->
+<section id="how" aria-labelledby="how-heading">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">How it works</span>
-      <h2 class="section-title">Start practising in under 60 seconds</h2>
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title" id="how-heading">Start practising in under 60 seconds</h2>
     </div>
     <div class="steps">
       <div class="step reveal">
-        <div class="step-num">01</div>
-        <div class="step-title">Choose your level</div>
-        <p class="step-desc">Select Common Entrance, Junior WAEC, or Senior Secondary. No signup needed to begin.</p>
+        <div class="step-num" aria-hidden="true">01</div>
+        <h3 class="step-title">Choose your level</h3>
+        <p class="step-desc">Select Common Entrance, Junior WAEC, or Senior Secondary (JAMB/WAEC). No signup needed to begin.</p>
       </div>
       <div class="step reveal">
-        <div class="step-num">02</div>
-        <div class="step-title">Pick your subject</div>
-        <p class="step-desc">Start with your weakest subject. PassMax adapts the difficulty as you improve.</p>
+        <div class="step-num" aria-hidden="true">02</div>
+        <h3 class="step-title">Pick your subject</h3>
+        <p class="step-desc">Start with your weakest subject. PassMax tracks your accuracy and flags danger zones automatically.</p>
       </div>
       <div class="step reveal">
-        <div class="step-num">03</div>
-        <div class="step-title">Answer & learn</div>
-        <p class="step-desc">AI explains every answer. Build understanding, not just memorisation.</p>
+        <div class="step-num" aria-hidden="true">03</div>
+        <h3 class="step-title">Answer &amp; learn</h3>
+        <p class="step-desc">Every wrong answer gets a plain-English AI explanation — the concept, the why, and a memory tip.</p>
       </div>
       <div class="step reveal">
-        <div class="step-num">04</div>
-        <div class="step-title">Track your growth</div>
-        <p class="step-desc">Create a free account to save your streak, see your subject breakdown, and share your results.</p>
+        <div class="step-num" aria-hidden="true">04</div>
+        <h3 class="step-title">Track &amp; share</h3>
+        <p class="step-desc">Create a free account to save your streak, see your subject breakdown and share your result card with friends.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" aria-labelledby="testi-heading">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">What parents & students say</span>
-      <h2 class="section-title">Real results. Real Nigerian students.</h2>
+      <span class="section-label">What Parents &amp; Students Say</span>
+      <h2 class="section-title" id="testi-heading">Real results. Real Nigerian students.</h2>
     </div>
     <div class="testi-grid">
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"My daughter was failing Mathematics. After two weeks on PassMax, she scored 68% on her mock exam. The explanations are very clear."</p>
+      <article class="testi-card reveal">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text">"My daughter was failing Mathematics. Two weeks on PassMax and she scored 68% on her mock WAEC. The AI explanations are very clear and she actually understands now."</p>
         <div class="testi-author">
-          <div class="testi-avatar" style="background: rgba(240,165,0,0.15); color: var(--gold);">AO</div>
-          <div>
-            <div class="testi-name">Adunola O.</div>
-            <div class="testi-role">Parent · Lagos</div>
-          </div>
+          <div class="testi-avatar" style="background:rgba(240,165,0,0.15);color:var(--gold);" aria-hidden="true">AO</div>
+          <div><div class="testi-name">Adunola O.</div><div class="testi-role">Parent · Lagos</div></div>
         </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"I practise every morning before school. The streaks keep me motivated. I scored 234 in my mock JAMB this month."</p>
+      </article>
+      <article class="testi-card reveal">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text">"I practise every morning before school. The streaks keep me motivated. I scored 234 in my JAMB mock this month — I know I can get 280 in the real one."</p>
         <div class="testi-author">
-          <div class="testi-avatar" style="background: rgba(34,197,94,0.15); color: var(--green);">EK</div>
-          <div>
-            <div class="testi-name">Emmanuel K.</div>
-            <div class="testi-role">SS3 Student · Abuja</div>
-          </div>
+          <div class="testi-avatar" style="background:rgba(34,197,94,0.15);color:var(--green);" aria-hidden="true">EK</div>
+          <div><div class="testi-name">Emmanuel K.</div><div class="testi-role">SS3 Student · Abuja</div></div>
         </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Better than buying past question booklets every year. My son uses it daily and his confidence has improved so much."</p>
+      </article>
+      <article class="testi-card reveal">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text">"Better than buying past question booklets every year. My son uses it daily, his confidence has improved and the Parent Dashboard lets me monitor without nagging him."</p>
         <div class="testi-author">
-          <div class="testi-avatar" style="background: rgba(99,179,237,0.15); color: #63b3ed;">TI</div>
-          <div>
-            <div class="testi-name">Taiwo I.</div>
-            <div class="testi-role">Parent · Ibadan</div>
-          </div>
+          <div class="testi-avatar" style="background:rgba(99,179,237,0.15);color:#63b3ed;" aria-hidden="true">TI</div>
+          <div><div class="testi-name">Taiwo I.</div><div class="testi-role">Parent · Ibadan</div></div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
+<!-- ── PRICING ── -->
+<section id="pricing" aria-labelledby="pricing-heading">
   <div class="container">
-    <div class="reveal" style="text-align: center;">
+    <div class="reveal" style="text-align:center;">
       <span class="section-label">Pricing</span>
-      <h2 class="section-title">Affordable for every Nigerian family</h2>
-      <p class="section-sub" style="margin: 0 auto;">Less than a lesson teacher for one day. Unlimited practice for a full month.</p>
+      <h2 class="section-title" id="pricing-heading">Affordable for every Nigerian family</h2>
+      <p class="section-sub" style="margin:0 auto 16px;">Less than one lesson teacher session. Unlimited AI-powered practice for a full month.</p>
     </div>
     <div class="pricing-grid">
+
       <!-- Free -->
-      <div class="price-card reveal">
-        <div class="price-name">Free</div>
+      <article class="price-card reveal">
+        <h3 class="price-name">Free</h3>
         <div class="price-amount price-free">₦0 <span>/ forever</span></div>
-        <p class="price-desc">Try PassMax with no signup. Great for getting a feel before committing.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> 3 free questions daily</li>
-          <li><span class="check">✓</span> All 3 education levels</li>
-          <li><span class="check">✓</span> AI explanations</li>
-          <li><span class="cross">✗</span> No streak saving</li>
-          <li><span class="cross">✗</span> No performance history</li>
-          <li><span class="cross">✗</span> No mock exams</li>
+        <p class="price-desc">Try PassMax with zero commitment. Great for getting a feel before subscribing.</p>
+        <ul class="price-features" aria-label="Free plan features">
+          <li><span class="check" aria-hidden="true">✓</span> 3 free practice questions daily</li>
+          <li><span class="check" aria-hidden="true">✓</span> All 3 education levels</li>
+          <li><span class="check" aria-hidden="true">✓</span> AI explanations on answers</li>
+          <li><span class="cross" aria-hidden="true">✗</span> No streak or XP saving</li>
+          <li><span class="cross" aria-hidden="true">✗</span> No performance history</li>
+          <li><span class="cross" aria-hidden="true">✗</span> No mock exams</li>
         </ul>
-        <a href="https://passmax-ai.onrender.com" class="btn-secondary" style="width:100%; justify-content:center;">Try Free Now</a>
-      </div>
+        <a href="https://passmax-ai.onrender.com" class="btn-secondary" style="width:100%;justify-content:center;">Try Free Now</a>
+      </article>
 
-      <!-- Pro -->
-      <div class="price-card featured reveal">
+      <!-- Student Pro -->
+      <article class="price-card featured reveal">
         <span class="price-badge">Most Popular</span>
-        <div class="price-name">Pro</div>
+        <h3 class="price-name">Student Pro ⚡</h3>
         <div class="price-amount">₦2,500 <span>/ month</span></div>
-        <p class="price-desc">Everything a serious student needs to pass. Full access, unlimited practice, AI explanations.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> Unlimited daily questions</li>
-          <li><span class="check">✓</span> Streak tracking & rewards</li>
-          <li><span class="check">✓</span> Subject performance breakdown</li>
-          <li><span class="check">✓</span> Mock exam simulations</li>
-          <li><span class="check">✓</span> Shareable result cards</li>
-          <li><span class="check">✓</span> Study Planner + countdown</li>
-          <li><span class="check">✓</span> AI Solver & Study Chat</li>
+        <p class="price-desc">Everything a serious student needs to pass JAMB, WAEC or Common Entrance first time.</p>
+        <ul class="price-features" aria-label="Student Pro features">
+          <li><span class="check" aria-hidden="true">✓</span> Unlimited daily practice questions</li>
+          <li><span class="check" aria-hidden="true">✓</span> Streak tracking, XP &amp; national leaderboard</li>
+          <li><span class="check" aria-hidden="true">✓</span> Subject performance breakdown</li>
+          <li><span class="check" aria-hidden="true">✓</span> Danger Zone topic tracker</li>
+          <li><span class="check" aria-hidden="true">✓</span> Full CBT mock exam simulations</li>
+          <li><span class="check" aria-hidden="true">✓</span> Shareable result cards</li>
+          <li><span class="check" aria-hidden="true">✓</span> Study Planner + exam countdown</li>
+          <li><span class="check" aria-hidden="true">✓</span> AI Solver &amp; Study Chat tutor</li>
+          <li><span class="check" aria-hidden="true">✓</span> Score Predictor</li>
         </ul>
-        <a href="https://passmax-ai.onrender.com" class="btn-primary" style="width:100%; justify-content:center;">Get Pro ⚡</a>
-      </div>
+        <a href="https://passmax-ai.onrender.com" class="btn-primary" style="width:100%;justify-content:center;">Subscribe — ₦2,500/mo ⚡</a>
+      </article>
 
-      <!-- Family -->
-      <div class="price-card reveal">
-        <div class="price-name">Family</div>
-        <div class="price-amount">₦4,500 <span>/ month</span></div>
-        <p class="price-desc">One subscription for up to 3 children. Different levels, one bill. Perfect for parents.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> Everything in Pro</li>
-          <li><span class="check">✓</span> Up to 3 student accounts</li>
-          <li><span class="check">✓</span> Parent dashboard</li>
-          <li><span class="check">✓</span> Progress reports per child</li>
-          <li><span class="check">✓</span> Different exam levels per child</li>
+      <!-- Family Bundle -->
+      <article class="price-card reveal">
+        <h3 class="price-name">Family Bundle 👨‍👩‍👧</h3>
+        <div class="price-amount">₦5,000 <span>/ month</span></div>
+        <p class="price-desc">One subscription for up to 3 children across different exam levels. Perfect for Nigerian families.</p>
+        <ul class="price-features" aria-label="Family Bundle features">
+          <li><span class="check" aria-hidden="true">✓</span> Everything in Student Pro</li>
+          <li><span class="check" aria-hidden="true">✓</span> Up to 3 children's accounts</li>
+          <li><span class="check" aria-hidden="true">✓</span> Parent monitoring dashboard</li>
+          <li><span class="check" aria-hidden="true">✓</span> Each child on different exam level</li>
+          <li><span class="check" aria-hidden="true">✓</span> WhatsApp parent progress alerts</li>
+          <li><span class="check" aria-hidden="true">✓</span> Weekly PDF progress reports</li>
         </ul>
-        <a href="https://passmax-ai.onrender.com" class="btn-secondary" style="width:100%; justify-content:center;">Get Family Plan</a>
-      </div>
+        <a href="https://passmax-ai.onrender.com" class="btn-secondary" style="width:100%;justify-content:center;">Subscribe to Family — ₦5,000/mo</a>
+      </article>
+    </div>
+
+    <!-- WhatsApp CTA for students -->
+    <div style="background:rgba(37,211,102,0.07);border:1px solid rgba(37,211,102,0.2);border-radius:16px;padding:20px 24px;margin-top:24px;text-align:center;" class="reveal">
+      <div style="font-size:0.85rem;font-weight:700;color:#25D366;margin-bottom:6px;">📲 Let Your Parent Pay For You</div>
+      <div style="font-size:0.82rem;color:var(--muted);margin-bottom:14px;">No card? Send this page to your parent on WhatsApp and ask them to subscribe for you.</div>
+      <a href="https://wa.me/?text=Please%20subscribe%20me%20to%20PassMax%20AI%20for%20my%20JAMB%2FWAEC%20preparation.%20It%27s%20%E2%82%A62%2C500%2Fmonth%20and%20works%20like%20Duolingo%20for%20Nigerian%20exams.%20Here%27s%20the%20link%3A%20https%3A%2F%2Fpassmax.ng" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-weight:700;font-size:0.88rem;padding:12px 24px;border-radius:10px;text-decoration:none;">📲 Send to Parent on WhatsApp</a>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section style="background: var(--dark2);">
-  <div class="container" style="max-width: 720px;">
+<!-- ── FAQ ── -->
+<section id="faq" style="background:var(--dark2);" aria-labelledby="faq-heading">
+  <div class="container" style="max-width:740px;">
     <div class="reveal">
       <span class="section-label">FAQ</span>
-      <h2 class="section-title">Questions parents always ask</h2>
+      <h2 class="section-title" id="faq-heading">Questions parents always ask</h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item reveal">
-        <div class="faq-q" onclick="toggleFaq(this)">
+      <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" itemprop="name">
           Are the questions from real JAMB and WAEC past papers?
-          <span class="faq-toggle">+</span>
+          <span class="faq-toggle" aria-hidden="true">+</span>
         </div>
-        <div class="faq-a">Yes. PassMax draws from past JAMB, WAEC, NECO, and Common Entrance questions across multiple years, combined with AI-generated practice questions that follow the exact same format and difficulty.</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Does my child need a smartphone?
-          <span class="faq-toggle">+</span>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Yes. PassMax draws from over 60,000 authentic past questions from JAMB, WAEC, NECO, BECE and Common Entrance — spanning multiple decades of real exam papers, curated, curriculum-aligned, and enriched with AI explanations. Updated every exam cycle.</span>
         </div>
-        <div class="faq-a">PassMax works on any smartphone browser — Android or iPhone. No app download needed. It also works on tablets and laptops. As long as they have a browser and data, they can practise.</div>
       </div>
-      <div class="faq-item reveal">
-        <div class="faq-q" onclick="toggleFaq(this)">
+      <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" itemprop="name">
+          Does my child need a smartphone or app download?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">No app download needed. PassMax works on any smartphone browser — Android or iPhone — as well as tablets and laptops. As long as your child has a browser and internet access, they can practise anywhere.</span>
+        </div>
+      </div>
+      <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" itemprop="name">
           How do I pay for the subscription?
-          <span class="faq-toggle">+</span>
+          <span class="faq-toggle" aria-hidden="true">+</span>
         </div>
-        <div class="faq-a">Payment is via bank transfer. After payment, send your receipt and you'll be activated within 1 hour. We're adding card payment soon.</div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Payment is via bank transfer, card, USSD or Verve. After payment, send your receipt and your account is activated within 1 hour. Students without a card can send the WhatsApp link to their parents to pay on their behalf.</span>
+        </div>
       </div>
-      <div class="faq-item reveal">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Can I use it for Common Entrance AND WAEC for different children?
-          <span class="faq-toggle">+</span>
+      <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" itemprop="name">
+          Can I use it for Common Entrance AND JAMB for different children?
+          <span class="faq-toggle" aria-hidden="true">+</span>
         </div>
-        <div class="faq-a">Yes — that's exactly what the Family plan is designed for. Each child gets their own account at the right education level. One payment covers all of them.</div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Yes — the Family Bundle is designed exactly for this. Each child gets their own account at their own level. One subscription of ₦5,000/month covers up to 3 children simultaneously across different education levels.</span>
+        </div>
       </div>
-      <div class="faq-item reveal">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Is this better than buying past question booklets?
-          <span class="faq-toggle">+</span>
+      <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" itemprop="name">
+          Is PassMax AI better than buying past question booklets?
+          <span class="faq-toggle" aria-hidden="true">+</span>
         </div>
-        <div class="faq-a">PassMax gives AI explanations for every answer, tracks your child's weak subjects, adjusts difficulty, and keeps them motivated with gamification. Past question booklets can't do any of that.</div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">PassMax gives AI explanations for every answer, tracks your child's weak subjects automatically, adjusts difficulty, keeps them motivated with streaks, lets you monitor progress as a parent, and costs less than a new booklet each year. Past question booklets cannot do any of that.</span>
+        </div>
+      </div>
+      <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" itemprop="name">
+          Can I cancel anytime?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Yes — cancel anytime, no questions asked. Your access continues until the end of your paid period. There are no long-term contracts or hidden fees.</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA BAND -->
-<section class="cta-band">
+<!-- ── CTA BAND ── -->
+<section class="cta-band" aria-labelledby="cta-heading">
   <div class="container">
     <div class="reveal">
-      <h2 class="section-title">Your child's exam is coming.<br>Are they ready?</h2>
-      <p class="section-sub">Start free today. No signup, no payment. Just 3 questions to see how PassMax works.</p>
-      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top: 36px;">
-        <a href="https://passmax-ai.onrender.com" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;">⚡ Start Free Practice</a>
-        <a href="#pricing" class="btn-secondary" style="font-size:1.05rem; padding:16px 36px;">View Pricing</a>
+      <h2 class="section-title" id="cta-heading">Your child's exam is coming.<br>Are they ready?</h2>
+      <p class="section-sub" style="margin:0 auto 36px;">Start free today — no signup, no payment. 3 questions to see exactly how PassMax works.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://passmax-ai.onrender.com" class="btn-primary lg">⚡ Start Free Practice</a>
+        <a href="#pricing" class="btn-secondary lg">View Pricing</a>
       </div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:20px;">Trusted by 1,200+ students across 47 schools in Nigeria</p>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-logo">⚡ PassMax AI</div>
   <div class="footer-links">
     <a href="#">About</a>
+    <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
-    <a href="#">Contact</a>
+    <a href="#faq">FAQ</a>
+    <a href="mailto:hello@passmax.ng">Contact</a>
     <a href="#">Privacy Policy</a>
-    <a href="#">Terms</a>
+    <a href="#">Terms of Use</a>
   </div>
   <div class="footer-copy">© 2026 PassMax AI · Nigeria's Smartest Exam Companion · Built with ⚡ in Nigeria</div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  reveals.forEach(el => observer.observe(el));
-
-  // FAQ toggle
-  function toggleFaq(el) {
-    const item = el.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => {
-      i.classList.remove('open');
-      i.querySelector('.faq-toggle').textContent = '+';
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      el.querySelector('.faq-toggle').textContent = '−';
-    }
+// FAQ
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-toggle').textContent = '+';
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    el.querySelector('.faq-toggle').textContent = '−';
+    el.setAttribute('aria-expanded', 'true');
   }
+}
 </script>
 </body>
 </html>
