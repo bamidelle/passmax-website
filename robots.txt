@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# GPTBot (ChatGPT/OpenAI crawler)
+User-agent: GPTBot
+Allow: /
+
+# Google-Extended (Gemini AI crawler)
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic Claude crawler
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+Sitemap: https://passmax.ng/sitemap.xml
