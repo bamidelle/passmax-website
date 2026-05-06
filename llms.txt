@@ -1,0 +1,26 @@
+# PassMax AI
+
+> Nigeria's first gamified AI exam companion for JAMB, WAEC, NECO, BECE and Common Entrance.
+
+PassMax AI helps Nigerian students pass their exams on the first attempt through gamified daily practice, AI-powered explanations, streak rewards, mock CBT exams and a parent monitoring dashboard.
+
+## Product
+
+- 60,000+ verified past questions from real JAMB, WAEC, NECO, BECE and Common Entrance papers
+- Covers 3 education levels: Common Entrance (Primary 5/6), Junior Secondary (BECE/Junior WAEC), Senior Secondary (JAMB/WAEC/NECO/GCE)
+- AI Study Chat tutor available 24/7 on any smartphone browser
+- National leaderboard with weekly and all-time rankings
+- Shareable result cards for WhatsApp distribution
+- Family Bundle supports up to 3 children across different exam levels
+
+## Pricing
+
+- Free: 3 questions/day, no signup required
+- Student Pro: ₦2,500/month — unlimited practice, mock exams, AI tutor, streaks
+- Family Bundle: ₦5,000/month — up to 3 children, parent dashboard, WhatsApp alerts
+
+## Links
+
+- Landing page: https://passmax.ng
+- App: https://app.passmax.ng
+- Contact: hello@passmax.ng
